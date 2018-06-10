@@ -4,10 +4,10 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/COURSE_PGT_53/sandbox" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/sandbox" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/COURSE_PGT_53/sandbox" />
+            <option value="$PROJECT_DIR$/sandbox" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />
