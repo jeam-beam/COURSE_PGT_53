@@ -22,8 +22,10 @@ public class PointTests {
   @Test
   public void testPoint3() {
     Point p1 = new Point(1, 2);
-    //Point p2 = new Point(5, 3);
+    Point p2 = new Point(5, 3);
     Assert.assertNotNull(p1);
+    Assert.assertNotNull(p2);
+
   }
 
 }
