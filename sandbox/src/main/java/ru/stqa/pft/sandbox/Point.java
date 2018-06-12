@@ -1,4 +1,4 @@
-package zadanie_2;
+package ru.stqa.pft.sandbox;
 
 public class Point {
   public double x;
