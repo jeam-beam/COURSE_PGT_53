@@ -23,10 +23,6 @@ public class GroupCreationTests {
         //wd = new FirefoxDriver();
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files (x86)/Mozilla Firefox/firefox.exe"));
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    }
-    
-    @Test
-    public void GroupCreationTests() {
         wd.get("http://localhost/addressbook/");
         wd.findElement(By.name("user")).click();
         wd.findElement(By.name("user")).clear();
@@ -36,6 +32,10 @@ public class GroupCreationTests {
         wd.findElement(By.name("pass")).sendKeys("secret");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
         wd.findElement(By.cssSelector("html")).click();
+    }
+    
+    @Test
+    public void testGroupCreation() {
         wd.findElement(By.linkText("groups")).click();
         wd.findElement(By.name("new")).click();
         wd.findElement(By.name("group_name")).click();
