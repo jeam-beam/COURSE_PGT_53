@@ -14,6 +14,32 @@ public class ContactData {
   private final String email;
   private String group;
 
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "firstname='" + firstname + '\'' +
+            ", midlename='" + midlename + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+    return midlename != null ? midlename.equals(that.midlename) : that.midlename == null;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = firstname != null ? firstname.hashCode() : 0;
+    result = 31 * result + (midlename != null ? midlename.hashCode() : 0);
+    return result;
+  }
+
   public ContactData(String firstname, String midlename, String lastname, String nickname, String title, String company,
                      String address, String homephone, String mobilephone, String workphone, String email, String group) {
     this.firstname = firstname;
