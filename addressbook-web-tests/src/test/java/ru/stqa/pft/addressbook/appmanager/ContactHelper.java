@@ -79,6 +79,20 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
+  public List<ContactData> getContactList() {
+      List<ContactData> contacts = new ArrayList<ContactData>();
+      List<WebElement> elements = wd.findElements(By.tagName("tr"));
+      for (WebElement element : elements) {
+        String firstname1 = element.getText();
+        String middlename1 = element.getText();
+        ContactData contact = new ContactData(firstname1, middlename1, null,
+                 null, null, null, null, null, null,
+                null, null, null);
+      contacts.add(contact);
+      }
+    return contacts;
+  }
+
 
 //  public List<ContactData> getContactList() {
 //    List<ContactData> contacts = new ArrayList<ContactData>();
@@ -99,3 +113,22 @@ public class ContactHelper extends HelperBase {
   //  return contacts;
   //}
 }
+
+
+
+
+
+//  public List<NewContactData> getContactList() {
+//    List<NewContactData> contacts = new ArrayList<NewContactData>();
+////        List<WebElement> elements = wd.findElements(By.xpath("//td[@class='center']//input"));
+//    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
+//    for (WebElement element : elements) {
+////            String name = element.getText();
+//      int id = Integer.parseInt(element.findElement(By.xpath(".//td[@class='center']//input")).getAttribute("value"));
+//      String lastName = element.findElement(By.xpath(".//td[2]")).getText();
+//      String firstName = element.findElement(By.xpath(".//td[3]")).getText();
+//      NewContactData contact = new NewContactData(id, firstName, lastName, null, null);
+//      contacts.add(contact);
+//    }
+//    return contacts;
+//  }
