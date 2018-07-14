@@ -11,9 +11,9 @@ import java.util.List;
 public class ContactModificationTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().contactList();
+    app.goTo().contactPage();
     if (app.contact().list().size() == 0) {
-    app.goTo().goToContactPage();
+    app.goTo().newContact();
     app.contact().creationContact(new ContactData("Firstname1", "Middlename", "Lastname",
             "Nickname", "Titel", "Company", "Address", "7-77-77-77", "2-22-22-22",
             "1-11-11-11", "Test@mail.com", "test11"), true);

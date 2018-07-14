@@ -18,12 +18,12 @@ public class NavigationHelper extends HelperBase {
     click(By.linkText("groups"));
   }
 
-  public void goToContactPage() {
+  public void newContact() {
     click(By.linkText("add new"));
   }
 
   
-  public void contactList() {
+  public void contactPage() {
     if (isElementPresent(By.id("maintable"))) {
       return;
     }
