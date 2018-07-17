@@ -86,7 +86,6 @@ public class ContactData {
     return id;
   }
 
-
   public String getFirstname() {
     return firstname;
   }
