@@ -31,7 +31,7 @@ public class ContactModificationTests extends TestBase {
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId()).withFirstname("Firstname1").withMidlename("Middlename2222")
-            .withLastname("Lastname").withNickname("Nickname").withTitle("Titel").withCompany("Company")
+            .withLastname("Lastname2222").withNickname("Nickname").withTitle("Titel").withCompany("Company")
             .withAddress("Address").withHomephone("7-77-77-77").withMobilephone("2-22-22-22")
             .withWorkphone("11-11-11-11").withEmail("Test@mail.com").withGroup("test11");
     app.contact().modify(contact);

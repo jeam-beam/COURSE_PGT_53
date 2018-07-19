@@ -42,8 +42,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void modify(ContactData contact) {
-    selectContactById(contact.getId());
-    editContact();
+    //selectContactById(contact.getId());
+    editContactById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
     returnToContactPage();
@@ -63,8 +63,12 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void editContact() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+//  public void editContact() {
+//    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+//  }
+
+  public void editContactById(int id) {
+    click(By.xpath("//table[@id='maintable']/tbody/tr['"+id+"']/td[8]/a/img"));
   }
 
   public void selectContactById(int id) {
