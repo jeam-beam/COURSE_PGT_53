@@ -15,11 +15,10 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() {
     app.goTo().homePage();
     Contacts before = app.contact().all();
-    //ContactData contact = new ContactData().withFirstname("Firstname1").withLastname("Lastname2").withGroup("test1");
     File photo = new File("src/test/resources/Logo_R.jpeg");
-    ContactData contact = new ContactData().withFirstname("Firstname1").withLastname("Lastname2").withPhoto(photo);
+    ContactData contact = new ContactData().withFirstname("Firstname1").withLastname("Lastname2")
+            .withGroup("test1").withPhoto(photo);
     app.goTo().newContact();
-    //app.contact().create(new ContactData().withFirstname("Firstname1").withLastname("Lastname2").withPhoto(photo), true);
     app.contact().create(contact, true);
     app.goTo().homePage();
     assertThat(app.contact().count(), equalTo(before.size() + 1));
