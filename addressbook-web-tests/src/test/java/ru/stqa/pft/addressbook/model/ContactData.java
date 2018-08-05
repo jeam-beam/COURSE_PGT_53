@@ -3,10 +3,13 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -50,8 +53,13 @@ public class ContactData {
   @Type(type = "text")
   private String workphone;
 
-  @Transient
-  private String group;
+  //  @Transient
+//  private String group;
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
+
   @Transient
   private String allPhones;
   @Transient
@@ -86,10 +94,12 @@ public class ContactData {
     this.email = email;
     return this;
   }
+
   public ContactData withEmail2(String email2) {
     this.email2 = email2;
     return this;
   }
+
   public ContactData withEmail3(String email3) {
     this.email3 = email3;
     return this;
@@ -155,18 +165,13 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
-
   public ContactData withId(int id) {
     this.id = id;
     return this;
   }
 
 
-  public String getAllPhones(){
+  public String getAllPhones() {
     return allPhones;
   }
 
@@ -230,8 +235,8 @@ public class ContactData {
     return email2;
   }
 
-  public String getGroup() {
-    return group;
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   @Override
@@ -268,5 +273,10 @@ public class ContactData {
     int result = firstname != null ? firstname.hashCode() : 0;
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
+  }
+
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
   }
 }

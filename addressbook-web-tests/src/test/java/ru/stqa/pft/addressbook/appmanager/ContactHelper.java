@@ -16,7 +16,7 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("middlename"), contactData.getMidlename());
     type(By.name("lastname"), contactData.getLastname());
@@ -30,12 +30,16 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail());
     //attach(By.name("photo"), contactData.getPhoto());
 
-//    if (creation) {
-//      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-//    } else {
-//      Assert.assertFalse(isElementPresent(By.name("new_group")));
-//    }
+    if (creation) {
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      } else {
+        Assert.assertFalse(isElementPresent(By.name("new_group")));
+      }
+    }
   }
+
 
 //  public void fillContactForm(ContactData contactData, boolean creation) {
 //    type(By.name("firstname"), contactData.getFirstname());
@@ -65,17 +69,17 @@ public class ContactHelper extends HelperBase {
 //    returnToContactPage();
 //  }
 
-  public void create(ContactData contact) {
-    fillContactForm(contact);
+  public void create(ContactData contact, boolean creation) {
+    fillContactForm(contact, creation);
     inputContact();
     contactCache = null;
     returnToContactPage();
   }
 
-  public void modify(ContactData contact) {
+  public void modify(ContactData contact, boolean creation) {
     initContactModificationById(contact.getId());
     //editContactById(contact.getId());
-    fillContactForm(contact);
+    fillContactForm(contact, creation);
     submitContactModification();
     contactCache = null;
     returnToContactPage();
@@ -101,7 +105,7 @@ public class ContactHelper extends HelperBase {
 //  }
 
   public void editContactById(int id) {
-    click(By.xpath("//table[@id='maintable']/tbody/tr['"+id+"']/td[8]/a/img"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr['" + id + "']/td[8]/a/img"));
   }
 
   public void selectContactById(int id) {
@@ -176,13 +180,13 @@ public class ContactHelper extends HelperBase {
   }
 
   private void initContactModificationById(int id) {
-    wd.findElement(By.xpath("//input[@value='"+id+"']//ancestor::td//following-sibling::td//img[@title='Edit']")).click();
+    wd.findElement(By.xpath("//input[@value='" + id + "']//ancestor::td//following-sibling::td//img[@title='Edit']")).click();
 
 //    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
 //    WebElement row = checkbox.findElement(By.xpath("./../.."));
 //    List<WebElement> cells = row.findElements(By.tagName("td"));
 //    cells.get(7).findElement(By.tagName("a")).click();
 
-     //wd.findElement(By.cssSelector(String.format("a[href='edit.pgp?id=%s']", id))).click();
+    //wd.findElement(By.cssSelector(String.format("a[href='edit.pgp?id=%s']", id))).click();
   }
 }
