@@ -1,23 +1,23 @@
 [
   {
-    "firstname": "firstname 0",
-    "lastname": "lastname 0",
-    "company": "company 0",
-    "address": "address 0",
-    "email": "e-mail 0"
+    "firstname": "firstname0",
+    "lastname": "lastname0",
+    "company": "company0",
+    "address": "address0",
+    "email": "e-mail0"
   },
   {
-    "firstname": "firstname 1",
-    "lastname": "lastname 1",
-    "company": "company 1",
-    "address": "address 1",
-    "email": "e-mail 1"
+    "firstname": "firstname1",
+    "lastname": "lastname1",
+    "company": "company1",
+    "address": "address1",
+    "email": "e-mail1"
   },
   {
-    "firstname": "firstname 2",
-    "lastname": "lastname 2",
-    "company": "company 2",
-    "address": "address 2",
-    "email": "e-mail 2"
+    "firstname": "firstname2",
+    "lastname": "lastname2",
+    "company": "company2",
+    "address": "address2",
+    "email": "e-mail2"
   }
 ]

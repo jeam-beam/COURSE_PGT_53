@@ -70,6 +70,7 @@ public class ContactData {
 
   @Column(name = "photo")
   @Type(type = "text")
+  @Transient
   private String photo;
 
   public File getPhoto() {
@@ -154,7 +155,6 @@ public class ContactData {
     return this;
   }
 
-
   public ContactData withGroup(String group) {
     this.group = group;
     return this;
@@ -164,7 +164,6 @@ public class ContactData {
     this.id = id;
     return this;
   }
-
 
 
   public String getAllPhones(){
@@ -240,7 +239,16 @@ public class ContactData {
     return "ContactData{" +
             "id=" + id +
             ", firstname='" + firstname + '\'' +
+            ", midlename='" + midlename + '\'' +
             ", lastname='" + lastname + '\'' +
+            ", company='" + company + '\'' +
+            ", address='" + address + '\'' +
+            ", homephone='" + homephone + '\'' +
+            ", mobilephone='" + mobilephone + '\'' +
+            ", workphone='" + workphone + '\'' +
+            ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
             '}';
   }
 
@@ -251,18 +259,14 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
-    if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
     return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
   }
 
   @Override
   public int hashCode() {
-    int result = id;
-    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+    int result = firstname != null ? firstname.hashCode() : 0;
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
   }
-
-
 }
