@@ -204,4 +204,19 @@ public class ContactHelper extends HelperBase {
   private void selectGroupFromMenu(GroupData group) {
     new Select(wd.findElement(By.name("to_group"))).selectByVisibleText((group.getName()));
   }
+
+  public void removeGroup(ContactData contact, GroupData group) {
+    selectGroup(group);
+    selectContactById(contact.getId());
+    submitRemove();
+  }
+
+  private void submitRemove() {
+    click(By.cssSelector("input[name='remove']"));
+  }
+
+  private void selectGroup(GroupData group) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText((group.getName()));
+
+  }
 }
