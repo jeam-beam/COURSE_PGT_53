@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -188,5 +189,19 @@ public class ContactHelper extends HelperBase {
 //    cells.get(7).findElement(By.tagName("a")).click();
 
     //wd.findElement(By.cssSelector(String.format("a[href='edit.pgp?id=%s']", id))).click();
+  }
+
+  public void addToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    selectGroupFromMenu(group);
+    submitGroupAddition();
+  }
+
+  private void submitGroupAddition() {
+    click(By.cssSelector("input[name='add']"));
+  }
+
+  private void selectGroupFromMenu(GroupData group) {
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText((group.getName()));
   }
 }

@@ -64,8 +64,8 @@ public class ContactCreationTests extends TestBase {
     ContactData newContact = new ContactData().withFirstname("Firstname1").withLastname("Lastname2")
             .inGroup(groups.iterator().next()).withPhoto(photo);
     app.goTo().newContact();
-    //app.contact().create(contact, false);
-    app.contact().create(contact);
+    app.contact().create(contact, false);
+    //app.contact().create(contact);
     app.goTo().homePage();
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));

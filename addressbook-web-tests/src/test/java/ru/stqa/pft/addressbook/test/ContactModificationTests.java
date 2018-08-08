@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase {
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0) {
       app.goTo().newContact();
-      app.contact().create(new ContactData().withFirstname("Firstname1").withLastname("Lastname"));
+      app.contact().create(new ContactData().withFirstname("Firstname1").withLastname("Lastname"), false);
     }
   }
 
@@ -27,7 +27,7 @@ public class ContactModificationTests extends TestBase {
             .withAddress("Address").withHomephone("77777").withMobilephone("22222")
             .withWorkphone("11111").withEmail("Test@mail.com");//.withGroup("test11");
     app.goTo().homePage();
-    app.contact().modify(contact);
+    app.contact().modify(contact, false);
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size()));
     //Assert.assertEquals(after.size(), before.size());
